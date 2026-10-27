@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f3f1ec" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1013" media="(prefers-color-scheme: dark)" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Nueva York" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon-v2.png" />
+    <link rel="icon" type="image/svg+xml" href="./icons/icono-v2.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192-v2.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <title>Nueva York</title>
+    <script type="module" crossorigin src="./assets/index-pyPxrKjp.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Cc9_EtFH.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      // Rescate: si la app no arranca (copia guardada rota tras una actualización), se borra la
+      // copia sin conexión y se recarga una vez. La clave, el progreso y las entradas no se tocan.
+      setTimeout(async function () {
+        if (window.__nyc26_ok || sessionStorage.getItem('nyc26-rescate')) return;
+        sessionStorage.setItem('nyc26-rescate', '1');
+        try {
+          var regs = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(regs.map(function (r) { return r.unregister(); }));
+          var ks = await caches.keys();
+          await Promise.all(ks.filter(function (k) { return k.indexOf('nyc26-') === 0; }).map(function (k) { return caches.delete(k); }));
+        } catch (e) {}
+        location.reload();
+      }, 8000);
+    </script>
+  </body>
+</html>
